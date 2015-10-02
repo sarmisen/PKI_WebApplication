@@ -16,6 +16,8 @@ namespace PKI_WebApplication
             Response.Write("<p />" + plaintext + " <p /><b>Hashes to</b><p /> " + doHash(plaintext));
             Response.Write("<p />" + plaintext2 + " <p /><b>Hashes to</b><p /> " + doHash(plaintext2));
             Response.Write("<p />" + plaintext3 + " <p /><b>Hashes to</b><p /> " + doHash(plaintext3));
+            string salt = GenerateSalt(8);
+            Response.Write("<p />" + plaintext3 + " <p /><b>Hashes with salt (" + salt + ") to </b><p /> " + ComputeHash(plaintext3, salt));
         }
 
         private string doHash(string plaintext)
@@ -33,6 +35,27 @@ namespace PKI_WebApplication
             string hex = BitConverter.ToString(hash).Replace("-", "");
             return hex;
 
+        }
+        private static string ComputeHash(string data, string salt)
+        {
+            byte[] plaintextBytes = Encoding.UTF8.GetBytes(data);
+
+            HMACSHA1 hashAlg = new HMACSHA1(Encoding.UTF8.GetBytes(salt));
+
+            byte[] hash = hashAlg.ComputeHash(plaintextBytes);
+
+            string hex = BitConverter.ToString(hash).Replace("-", "");
+
+            return hex;
+        }
+        private string GenerateSalt(int byteCount)
+        {
+            //Use cryptographically strong random number generator
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            byte[] salt = new byte[byteCount];
+            rng.GetBytes(salt);
+
+            return Convert.ToBase64String(salt);
         }
     }
 }
