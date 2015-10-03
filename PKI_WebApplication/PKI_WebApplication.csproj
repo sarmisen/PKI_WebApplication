@@ -66,9 +66,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="GenerateKey.aspx" />
+    <Content Include="Hash.aspx" />
+    <Content Include="Symmetric.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\conversions.cs" />
+    <Compile Include="classes\crypto.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -76,7 +81,28 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GenerateKey.aspx.cs">
+      <DependentUpon>GenerateKey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerateKey.aspx.designer.cs">
+      <DependentUpon>GenerateKey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hash.aspx.cs">
+      <DependentUpon>Hash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hash.aspx.designer.cs">
+      <DependentUpon>Hash.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Symmetric.aspx.cs">
+      <DependentUpon>Symmetric.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Symmetric.aspx.designer.cs">
+      <DependentUpon>Symmetric.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
