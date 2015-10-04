@@ -1,0 +1,23 @@
+﻿'En mi casa la ruta es C:\Windows\Microsoft.NET\Framework64\v4.0.30319
+
+'Crear claves RSA personalizadas
+aspnet_regiis -pc "RjbRsaKeys" -exp
+
+'Garantizar persmisos a la nueva clave (para que las páginas ASP.NET puedan utilizarlas)
+aspnet_regiis -pa "RjbRsaKeys" "NT Authority\Network Service"
+
+'Exportar las claves personalizadas a un archivo xml (publica y privada)
+aspnet_regiis -px "RjbRsaKeys" "c:\rjbRsaPublicPrivateKeys.xml" -pri
+
+'Exportar sólo la clave pública
+aspnet_regiis -px "RjbRsaKeys" "c:\rjbRsaPublicKey.xml"
+
+
+'Eliminar la clave personalizada (muestra que import funciona en la misma máquina)
+aspnet_regiis -pz "RjbRsaKeys"
+
+'Importar la clave pública desde un fichero XML
+aspnet_regiis -pi "RjbRsaKeys" "c:\rjbRsaPublicKey.xml" -pri
+
+'Importar ambas claves
+aspnet_regiis -pi "RjbRsaKeys" "c:\rjbRsaPublicPrivateKeys.xml" -pri

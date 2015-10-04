@@ -65,9 +65,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Comandos de creación de claves RSA.txt" />
     <Content Include="Default.aspx" />
     <Content Include="GenerateKey.aspx" />
     <Content Include="Hash.aspx" />
+    <Content Include="Asymmetric.aspx" />
     <Content Include="Symmetric.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -96,6 +98,13 @@
       <DependentUpon>Hash.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Asymmetric.aspx.cs">
+      <DependentUpon>Asymmetric.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asymmetric.aspx.designer.cs">
+      <DependentUpon>Asymmetric.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Symmetric.aspx.cs">
       <DependentUpon>Symmetric.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
